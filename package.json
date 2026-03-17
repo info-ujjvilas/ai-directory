@@ -1,0 +1,15 @@
+{
+  "name": "itarium-ai-hub",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:backend": "npm run dev --workspace=apps/backend",
+    "dev:employee": "npm run dev --workspace=apps/employee-app",
+    "dev:admin": "npm run dev --workspace=apps/admin-panel",
+    "build:all": "npm run build --workspaces --if-present"
+  }
+}
