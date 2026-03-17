@@ -14,12 +14,17 @@ const adminRouter = require('./routes/admin');
 
 const app = express();
 
-const corsOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5173,http://localhost:5174').split(',');
+const corsOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5300,http://localhost:5301').split(',');
 
-app.use(cors({
+const corsOptions = {
   origin: corsOrigins,
   credentials: true,
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
 
 // Public routes (still need auth for some)
